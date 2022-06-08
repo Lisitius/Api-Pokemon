@@ -1,9 +1,21 @@
 const express = require("express");
+const morgan = require("morgan");
+const favicon = require("serve-favicon");
+const bodyParser = require("body-parser");
+const sequelize = require("./src/db/sequelize");
 
 const app = express();
 const port = 4000;
 
-app.get("/", (req, res) => res.send("Hello, Express !"));
+/* middleware */
+app
+  .use(favicon(__dirname + "/favicon.ico"))
+  .use(morgan("dev"))
+  .use(bodyParser.json());
+
+sequelize.initDb();
+
+//Ici, futur points de terminaison.
 
 app.listen(port, () =>
   console.log(
