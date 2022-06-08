@@ -15,8 +15,16 @@ app
 
 sequelize.initDb();
 
-//Ici, futur points de terminaison.
+//find all pokemon
 require("./src/routes/findAllPokemons")(app);
+//find pokemon with id
+require("./src/routes/findPokemonByPk")(app);
+//create a pokemon
+require("./src/routes/createPokemon")(app);
+//update a pokemon
+require("./src/routes/updatePokemon")(app);
+//delete a pokemon
+require("./src/routes/deletePokemon")(app);
 
 app.listen(port, () =>
   console.log(
