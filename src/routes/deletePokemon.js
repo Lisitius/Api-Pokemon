@@ -19,7 +19,7 @@ module.exports = (app) => {
       })
       .catch((error) => {
         const message =
-          "Les pokémon n'a pas pu être modifié. Réessayez dans quelques instants.";
+          "Les pokémon n'a pas pu être supprimé. Réessayez dans quelques instants.";
         res.status(500).json({ message, data: error });
       });
   });

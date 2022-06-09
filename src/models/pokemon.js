@@ -10,18 +10,44 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "Le nom ne peut pas être vide.",
+          },
+          notNull: { msg: "Le nom est obligatoire." },
+        },
       },
       hp: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        validate: {
+          isInt: {
+            msg: "Utilisez uniquement des nombres entiers pour les points de vie.",
+          },
+          notNull: { msg: "Les points de vie sont une propriété obligatoire." },
+        },
       },
       cp: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        validate: {
+          isInt: {
+            msg: "Utilisez uniquement des nombres entiers pour les points de dégats.",
+          },
+          notNull: {
+            msg: "Les points de dégats sont une propriété obligatoire.",
+          },
+        },
       },
       picture: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isUrl: {
+            msg: "Utilisez uniquement une URL menant vers l'image du pokémon.",
+          },
+          notNull: { msg: "L'image est une propriété obligatoire." },
+        },
       },
       types: {
         type: DataTypes.STRING,
