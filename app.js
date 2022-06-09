@@ -15,16 +15,17 @@ app
 
 sequelize.initDb();
 
-//find all pokemon
 require("./src/routes/findAllPokemons")(app);
-//find pokemon with id
 require("./src/routes/findPokemonByPk")(app);
-//create a pokemon
 require("./src/routes/createPokemon")(app);
-//update a pokemon
 require("./src/routes/updatePokemon")(app);
-//delete a pokemon
 require("./src/routes/deletePokemon")(app);
+
+app.use(({ res }) => {
+  const message =
+    "Impossible de trouver la ressource demandée. Veuillez essayer une autre URL.";
+  res.status(404).json({ message });
+});
 
 app.listen(port, () =>
   console.log(
